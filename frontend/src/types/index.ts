@@ -220,6 +220,86 @@ export interface ChangePasswordPayload {
 export interface ReviewActionPayload {
   action: string
   reason?: string
+  comments?: CreateReviewCommentPayload[]
+}
+
+export interface CreateReviewCommentPayload {
+  content: string
+  priority?: string
+  paragraphIndex?: number | null
+  positionStart?: number | null
+  positionEnd?: number | null
+}
+
+export interface ReviewCommentDTO {
+  id: number
+  roundId: number
+  content: string
+  priority: string
+  paragraphIndex: number | null
+  positionStart: number | null
+  positionEnd: number | null
+  authorReply: string | null
+  authorResolved: boolean
+  authorRepliedAt: string | null
+  createdAt: string
+}
+
+export interface ReviewRoundDTO {
+  id: number
+  postId: number
+  reviewerId: number
+  reviewerName: string
+  result: string | null
+  modificationNote: string | null
+  createdAt: string
+  comments: ReviewCommentDTO[]
+}
+
+export interface ReviewTemplateDTO {
+  id: number
+  name: string
+  content: string
+  priority: string
+  createdAt: string
+  updatedAt: string | null
+}
+
+export interface CreateReviewTemplatePayload {
+  name: string
+  content: string
+  priority?: string
+}
+
+export interface UpdateReviewTemplatePayload {
+  name: string
+  content: string
+  priority?: string
+}
+
+export interface ReviewTimelineDTO {
+  postId: number
+  postTitle: string
+  postStatus: string
+  events: TimelineEventDTO[]
+}
+
+export interface TimelineEventDTO {
+  type: string
+  roundId: number | null
+  userId: number
+  userName: string
+  action: string
+  content: string | null
+  timestamp: string
+}
+
+export interface ResubmitWithNotePayload {
+  modificationNote: string
+}
+
+export interface AuthorReplyPayload {
+  reply: string
 }
 
 export interface BatchReviewPayload {

@@ -218,7 +218,7 @@ onMounted(loadPosts)
             {{ dayjs(scope.row.createdAt).format('YYYY-MM-DD HH:mm') }}
           </template>
         </el-table-column>
-        <el-table-column label="操作" width="260" fixed="right">
+        <el-table-column label="操作" width="320" fixed="right">
           <template #default="scope">
             <el-button
               v-if="canEdit(scope.row.status, scope.row.revision)"
@@ -237,6 +237,15 @@ onMounted(loadPosts)
               @click="handleSubmitReview(scope.row)"
             >
               提交审核
+            </el-button>
+            <el-button
+              v-if="scope.row.status === 'REJECTED' || scope.row.status === 'PENDING'"
+              class="action-btn"
+              type="info"
+              link
+              @click="router.push(`/author/posts/${scope.row.id}/review-feedback`)"
+            >
+              审查反馈
             </el-button>
             <el-button
               v-if="scope.row.status === 'SCHEDULED'"

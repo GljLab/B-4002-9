@@ -22,6 +22,7 @@ import AuthorStatsView from '../views/AuthorStatsView.vue'
 import AuthorSettingsView from '../views/AuthorSettingsView.vue'
 import AuthorProfileView from '../views/AuthorProfileView.vue'
 import AuthorImageView from '../views/AuthorImageView.vue'
+import AuthorReviewFeedbackView from '../views/AuthorReviewFeedbackView.vue'
 import ReaderProfileView from '../views/ReaderProfileView.vue'
 import ReaderSpaceView from '../views/ReaderSpaceView.vue'
 import CollectionView from '../views/CollectionView.vue'
@@ -55,6 +56,7 @@ const router = createRouter({
     { path: '/author/posts/create', name: 'author-create-post', component: AuthorCreatePostView, meta: { requiresAuth: true, role: 'AUTHOR' } },
     { path: '/author/posts/:id/edit', name: 'author-edit-post', component: AuthorEditPostView, meta: { requiresAuth: true, role: 'AUTHOR' } },
     { path: '/author/images', name: 'author-images', component: AuthorImageView, meta: { requiresAuth: true, role: 'AUTHOR' } },
+    { path: '/author/posts/:id/review-feedback', name: 'author-review-feedback', component: AuthorReviewFeedbackView, meta: { requiresAuth: true, role: 'AUTHOR' } },
     { path: '/author/stats', name: 'author-stats', component: AuthorStatsView, meta: { requiresAuth: true, role: 'AUTHOR' } },
     { path: '/author/settings', name: 'author-settings', component: AuthorSettingsView, meta: { requiresAuth: true, role: 'AUTHOR' } },
     // Reader routes
